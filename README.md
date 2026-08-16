@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,11 +205,11 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar (With Logo) -->
+    <!-- Top Navigation Bar with Logo -->
     <nav class="navbar">
         <a href="#">Home</a>
         <a href="#">Events</a>
-        <img src="https://i.imgur.com/rX97K2X.png" alt="Blackout City Logo" class="nav-logo">
+        <img src="https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png" alt="Blackout City Logo" class="nav-logo">
         <a href="#">Rules</a>
         <a href="#" class="active">Applications</a>
         <a href="#">Team</a>
@@ -220,7 +221,7 @@
         <p>Select a department to submit your official application directly to the staff team</p>
     </header>
 
-    <!-- Applications Cards Grid (4 Cards in 2x2 Layout) -->
+    <!-- Applications Cards Grid -->
     <div class="cards-container">
         <a href="whitelist.html" class="app-card">
             <h3>Whitelist (Citizen)</h3>
