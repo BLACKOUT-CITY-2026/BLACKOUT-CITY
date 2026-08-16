@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +27,7 @@
             font-family: var(--font-family);
             background-image: 
                 linear-gradient(to bottom, rgba(7, 8, 10, 0.90), rgba(7, 8, 10, 0.98)),
-                url('https://i.imgur.com/q1jX18g.png');
+                url('[https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png](https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png)');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -209,7 +208,7 @@
     <nav class="navbar">
         <a href="#">Home</a>
         <a href="#">Events</a>
-        <img src="https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png" alt="Blackout City Logo" class="nav-logo">
+        <img src="[https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png](https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png)" alt="Blackout City Logo" class="nav-logo">
         <a href="#">Rules</a>
         <a href="#" class="active">Applications</a>
         <a href="#">Team</a>
