@@ -117,20 +117,21 @@
         <p class="subtitle">Select a department to submit your official application directly to our team</p>
     </div>
 
+    <!-- البطاقات مع الـ Links الصحيحة لكل قسم -->
     <div class="cards-grid">
-        <a href="apply.html" class="card">
+        <a href="apply.html#whitelist" class="card">
             <div class="card-icon">👤</div>
             <div class="card-title">Whitelist (Citizen)</div>
         </a>
-        <a href="apply.html" class="card">
+        <a href="apply.html#gang" class="card">
             <div class="card-icon">🛡️</div>
             <div class="card-title">Gang & Family</div>
         </a>
-        <a href="apply.html" class="card">
+        <a href="apply.html#police" class="card">
             <div class="card-icon">⭐</div>
             <div class="card-title">Police Department</div>
         </a>
-        <a href="apply.html" class="card">
+        <a href="apply.html#ems" class="card">
             <div class="card-icon">✚</div>
             <div class="card-title">EMS Department</div>
         </a>
