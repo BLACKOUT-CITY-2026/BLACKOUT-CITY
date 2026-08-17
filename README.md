@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackout City - Applications</title>
+    <title>Blackout City - Home</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,7 +16,6 @@
             color: #ffffff;
             overflow-x: hidden;
         }
-        /* شريط التنقل العلوي */
         nav {
             display: flex;
             justify-content: center;
@@ -39,7 +38,6 @@
             border-bottom: 2px solid #e71d36;
             padding-bottom: 2px;
         }
-        /* الهيدر والعنوان */
         .header-container {
             text-align: center;
             padding: 50px 20px 30px;
@@ -63,7 +61,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        /* شبكة البطاقات */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -85,8 +82,6 @@
             justify-content: flex-end;
             text-decoration: none;
             transition: transform 0.3s, border-color 0.3s;
-            position: relative;
-            overflow: hidden;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -108,44 +103,36 @@
 </head>
 <body>
 
-    <!-- شريط التنقل العلوي -->
     <nav>
-        <a href="#">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="#">Events</a>
         <a href="#">Rules</a>
-        <a href="#" class="active">Applications</a>
+        <a href="apply.html">Applications</a>
         <a href="#">Team</a>
         <a href="#">Streamers</a>
-        <a href="#">Illegal</a>
     </nav>
 
-    <!-- العنوان الرئيسي -->
     <div class="header-container">
         <h1><span class="blackout">BLACKOUT CITY</span> <span class="app">APPLICATIONS</span></h1>
         <p class="subtitle">Select a department to submit your official application directly to our team</p>
     </div>
 
-    <!-- بطاقات الأقسام -->
     <div class="cards-grid">
-        <a href="#" class="card">
+        <a href="apply.html" class="card">
             <div class="card-icon">👤</div>
             <div class="card-title">Whitelist (Citizen)</div>
         </a>
-        <a href="#" class="card">
+        <a href="apply.html" class="card">
             <div class="card-icon">🛡️</div>
             <div class="card-title">Gang & Family</div>
         </a>
-        <a href="#" class="card">
+        <a href="apply.html" class="card">
             <div class="card-icon">⭐</div>
             <div class="card-title">Police Department</div>
         </a>
-        <a href="#" class="card">
+        <a href="apply.html" class="card">
             <div class="card-icon">✚</div>
             <div class="card-title">EMS Department</div>
-        </a>
-        <a href="#" class="card">
-            <div class="card-icon">🎬</div>
-            <div class="card-title">Creator Program</div>
         </a>
     </div>
 
