@@ -1,245 +1,151 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackout City - Applications</title>
     <style>
-        :root {
-            --bg-dark: #07080a;
-            --card-bg: #111316;
-            --text-main: #ffffff;
-            --text-muted: #8b949e;
-            --accent-red: #e71d36;
-            --border-color: #21262d;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-family);
-            background-image: 
-                linear-gradient(to bottom, rgba(7, 8, 10, 0.90), rgba(7, 8, 10, 0.98)),
-                url('[https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png](https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png)');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            padding-bottom: 60px;
+            background-color: #0b0b0b;
+            color: #ffffff;
             overflow-x: hidden;
         }
-
-        /* --- Navbar --- */
-        .navbar {
-            background-color: rgba(11, 13, 16, 0.95);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 40px;
+        /* شريط التنقل العلوي */
+        nav {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 1px solid #222;
         }
-
-        .nav-logo {
-            height: 45px;
-            margin: 0 15px;
-            object-fit: contain;
-        }
-
-        .navbar a {
+        nav a {
+            color: #aaa;
             text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 600;
             font-size: 13px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
-            position: relative;
+            letter-spacing: 1px;
+            transition: 0.2s;
         }
-
-        .navbar a:hover {
-            color: var(--text-main);
+        nav a:hover, nav a.active {
+            color: #fff;
+            border-bottom: 2px solid #e71d36;
+            padding-bottom: 2px;
         }
-
-        .navbar a.active {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .navbar a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent-red);
-        }
-
-        /* --- Main Header --- */
-        .main-header {
+        /* الهيدر والعنوان */
+        .header-container {
             text-align: center;
             padding: 50px 20px 30px;
         }
-
-        .main-header h1 {
-            font-size: 42px;
-            font-weight: 900;
+        h1 {
+            font-size: 38px;
             text-transform: uppercase;
+            font-weight: 900;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            color: var(--text-main);
         }
-
-        .main-header h1 span {
-            color: var(--accent-red);
+        h1 span.blackout {
+            color: #ffffff;
         }
-
-        .main-header p {
-            color: var(--text-muted);
+        h1 span.app {
+            color: #e71d36;
+        }
+        p.subtitle {
+            color: #888;
             font-size: 13px;
-            max-width: 600px;
-            margin: 0 auto;
-            letter-spacing: 1.5px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        /* --- Cards Container --- */
-        .cards-container {
-            max-width: 1100px;
-            margin: 0 auto;
+        /* شبكة البطاقات */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
             padding: 0 20px;
         }
-
-        .app-card {
-            background: linear-gradient(135deg, rgba(17, 19, 22, 0.9), rgba(11, 13, 16, 0.95));
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 35px 25px;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all 0.3s ease;
+        .card {
+            background: linear-gradient(to bottom, rgba(20,20,20,0.7), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=500&q=80');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #222;
+            border-radius: 6px;
+            height: 250px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            justify-content: flex-end;
+            text-decoration: none;
+            transition: transform 0.3s, border-color 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
-
-        .app-card:hover {
-            transform: translateY(-4px);
-            border-color: #30363d;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #e71d36;
         }
-
-        .app-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent-red);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .app-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .app-card h3 {
+        .card-icon {
             font-size: 24px;
-            font-weight: 800;
+            margin-bottom: auto;
+            color: #fff;
+        }
+        .card-title {
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-
-        .app-card p {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 10px;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
-            .nav-logo {
-                height: 35px;
-                order: -1;
-                width: 100%;
-            }
-            .navbar a {
-                font-size: 11px;
-                letter-spacing: 1px;
-            }
-            .main-header h1 {
-                font-size: 28px;
-            }
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar with Logo -->
-    <nav class="navbar">
+    <!-- شريط التنقل العلوي -->
+    <nav>
         <a href="#">Home</a>
         <a href="#">Events</a>
-        <img src="[https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png](https://i.ibb.co/mrHj5dtQ/blackout-city-roleplay-icon-1024.png)" alt="Blackout City Logo" class="nav-logo">
         <a href="#">Rules</a>
         <a href="#" class="active">Applications</a>
         <a href="#">Team</a>
+        <a href="#">Streamers</a>
+        <a href="#">Illegal</a>
     </nav>
 
-    <!-- Main Header Section -->
-    <header class="main-header">
-        <h1>Blackout City <span>Applications</span></h1>
-        <p>Select a department to submit your official application directly to the staff team</p>
-    </header>
+    <!-- العنوان الرئيسي -->
+    <div class="header-container">
+        <h1><span class="blackout">BLACKOUT CITY</span> <span class="app">APPLICATIONS</span></h1>
+        <p class="subtitle">Select a department to submit your official application directly to our team</p>
+    </div>
 
-    <!-- Applications Cards Grid -->
-    <div class="cards-container">
-        <a href="whitelist.html" class="app-card">
-            <h3>Whitelist (Citizen)</h3>
-            <p>Apply to become an official citizen of Blackout City.</p>
+    <!-- بطاقات الأقسام -->
+    <div class="cards-grid">
+        <a href="#" class="card">
+            <div class="card-icon">👤</div>
+            <div class="card-title">Whitelist (Citizen)</div>
         </a>
-
-        <a href="police.html" class="app-card">
-            <h3>Police Department</h3>
-            <p>Enforce the law and protect the streets.</p>
+        <a href="#" class="card">
+            <div class="card-icon">🛡️</div>
+            <div class="card-title">Gang & Family</div>
         </a>
-
-        <a href="ems.html" class="app-card">
-            <h3>EMS Department</h3>
-            <p>Save lives and provide emergency medical services.</p>
+        <a href="#" class="card">
+            <div class="card-icon">⭐</div>
+            <div class="card-title">Police Department</div>
         </a>
-
-        <a href="gang.html" class="app-card">
-            <h3>Gang & Family</h3>
-            <p>Establish your faction or family legacy.</p>
+        <a href="#" class="card">
+            <div class="card-icon">✚</div>
+            <div class="card-title">EMS Department</div>
+        </a>
+        <a href="#" class="card">
+            <div class="card-icon">🎬</div>
+            <div class="card-title">Creator Program</div>
         </a>
     </div>
 
