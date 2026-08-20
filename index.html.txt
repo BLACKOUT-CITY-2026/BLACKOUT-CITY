@@ -3,261 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackout City - Applications Form</title>
+    <title>Blackout City Applications</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #050505; color: #ffffff; min-height: 100vh; padding-bottom: 40px; overflow-x: hidden; }
+        
+        /* Navigation Bar */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(5,5,5,0.95); border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        
+        /* Server Logo Styling */
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+        .server-logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff4b2b; box-shadow: 0 0 10px rgba(255, 75, 43, 0.4); }
+        .nav-logo span { font-size: 18px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        nav a:not(.nav-logo) { color: #888; text-decoration: none; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s; }
+        nav a:not(.nav-logo):hover, nav a.active { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        nav a.active { border-bottom: 2px solid #fff; padding-bottom: 4px; }
+
+        /* Header Section */
+        .header-section { text-align: center; padding: 50px 20px 30px; }
+        h1 { font-size: 42px; text-transform: uppercase; font-weight: 900; letter-spacing: 3px; margin-bottom: 10px; background: linear-gradient(90deg, #ffffff, #ff4b2b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { color: #aaa; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        
+        /* View Sections */
+        .page-view { display: none; padding: 30px 20px; animation: fadeIn 0.4s ease-in-out; }
+        .page-view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Cards Container */
+        .cards-container { display: flex; justify-content: center; gap: 20px; max-width: 1450px; margin: 30px auto; padding: 0 20px; flex-wrap: wrap; }
+        
+        .app-card { 
+            width: 270px; height: 380px; position: relative; background-size: cover; background-position: center; 
+            border: 1px solid #222; border-radius: 12px; padding: 30px 20px; display: flex; flex-direction: column; 
+            justify-content: flex-end; text-decoration: none; overflow: hidden; transition: 0.4s ease; cursor: pointer; 
         }
-        body {
-            background-color: #0b0b0b;
-            color: #f1f1f1;
-            padding: 20px;
+        
+        .app-card::after { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(to top, rgba(5,5,5,0.95) 25%, rgba(5,5,5,0.5) 70%, rgba(5,5,5,0.2) 100%); z-index: 1; 
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            background: rgba(0,0,0,0.8);
-            border-bottom: 1px solid #222;
-            margin: -20px -20px 30px -20px;
-        }
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        nav a:hover, nav a.active {
-            color: #fff;
-            border-bottom: 2px solid #e71d36;
-            padding-bottom: 2px;
-        }
-        .container {
-            max-width: 750px;
-            margin: 20px auto;
-            background: #141414;
-            padding: 40px;
-            border-radius: 8px;
-            border-top: 4px solid #e71d36;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-        }
-        h1 {
-            color: #e71d36;
-            margin-bottom: 5px;
-            font-size: 24px;
-            text-transform: uppercase;
-        }
-        p.subtitle {
-            color: #888;
-            font-size: 13px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        .tab {
-            background: #1e1e1e;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        .tab.active, .tab:hover {
-            background: #e71d36;
-            border-color: #e71d36;
-        }
-        .form-section {
-            display: none;
-        }
-        .form-section.active {
-            display: block;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: bold;
-            color: #ccc;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 12px;
-            background: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 14px;
-        }
-        input:focus, textarea:focus {
-            border-color: #e71d36;
-            outline: none;
-        }
-        textarea {
-            resize: vertical;
-            height: 100px;
-        }
-        .submit-btn {
-            background-color: #e71d36;
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: background 0.2s;
-        }
-        .submit-btn:hover {
-            background-color: #c5162d;
-        }
+        
+        .app-card > * { position: relative; z-index: 2; }
+        
+        .app-card:hover { border-color: #ff4b2b; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255, 75, 43, 0.3); }
+        
+        .card-icon { font-size: 32px; margin-bottom: auto; color: #fff; }
+        .card-content h3 { font-size: 14px; font-weight: 900; text-transform: uppercase; color: #fff; letter-spacing: 1.5px; }
+
+        /* Form Layout */
+        .form-wrapper { max-width: 700px; margin: 0 auto; background: #0e0e0e; border: 1px solid #222; border-radius: 12px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .form-wrapper h2 { font-size: 24px; text-transform: uppercase; margin-bottom: 8px; color: #fff; font-weight: 900; letter-spacing: 1px; }
+        .form-wrapper p.desc { font-size: 12px; color: #888; text-transform: uppercase; margin-bottom: 25px; border-bottom: 2px solid #ff4b2b; padding-bottom: 10px; letter-spacing: 1px; font-weight: 600; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; color: #ccc; letter-spacing: 1px; }
+        input, select, textarea { width: 100%; padding: 14px; background: #151515; border: 1px solid #282828; border-radius: 6px; color: #fff; font-size: 14px; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: #ff4b2b; outline: none; }
+        textarea { resize: vertical; height: 110px; }
+        .submit-btn { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; border: none; padding: 15px; font-size: 14px; font-weight: bold; text-transform: uppercase; border-radius: 6px; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; letter-spacing: 1px; }
+        .submit-btn:hover { opacity: 0.9; }
+        .back-btn { display: inline-block; margin-top: 20px; color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="container">
+    <!-- Navbar -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="#">Events</a>
-        <a href="#">Rules</a>
-        <a href="apply.html" class="active">Applications</a>
-        <a href="#">Team</a>
-        <a href="#">Streamers</a>
+        <a class="nav-logo" onclick="showView('home')">
+            <img src="https://i.ibb.co/Fb4M1cNz/content.png" alt="Blackout City Logo" class="server-logo-img">
+            <span>BLACKOUT CITY</span>
+        </a>
+        <div class="nav-links">
+            <a onclick="showView('home')">Home</a>
+            <a onclick="showView('whitelist')" style="color: #ff4b2b; font-weight: 900;">Blackout City Application</a>
+            <a onclick="showView('home')">Rules</a>
+            <a onclick="showView('home')">Team</a>
+        </div>
     </nav>
 
-    <h1>BLACKOUT CITY APPLICATIONS</h1>
-    <p class="subtitle">Select a department to submit your official application directly to the staff team.</p>
-
-    <!-- Tabs Navigation -->
-    <div class="nav-tabs">
-        <div class="tab active" onclick="switchTab(event, 'whitelist')">Whitelist</div>
-        <div class="tab" onclick="switchTab(event, 'police')">Police</div>
-        <div class="tab" onclick="switchTab(event, 'ems')">EMS</div>
-        <div class="tab" onclick="switchTab(event, 'gang')">Gang & Family</div>
+    <div class="header-section">
+        <h1>BLACKOUT CITY APPLICATIONS</h1>
+        <p class="subtitle">Select a department to submit your official application directly to our team</p>
     </div>
 
-    <!-- 1. Whitelist Form -->
-    <div id="whitelist" class="form-section active">
-        <form>
-            <div class="form-group">
-                <label>Character Name (First Last) *</label>
-                <input type="text" placeholder="e.g. John Smith" required>
+    <!-- Home Section (Cards) -->
+    <div id="home" class="page-view active">
+        <div class="cards-container">
+            <div class="app-card" onclick="showView('whitelist')" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80');">
+                <div class="card-icon">👤</div>
+                <div class="card-content">
+                    <h3>Whitelist (Citizen)</h3>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Age (OOC / IC) *</label>
-                <input type="text" placeholder="Real Age / Character Age" required>
+            
+            <div class="app-card" onclick="showView('gang')" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80');">
+                <div class="card-icon">🎯</div>
+                <div class="card-content">
+                    <h3>Gang & Family</h3>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Server Rules Knowledge *</label>
-                <textarea placeholder="Do you have good knowledge of rules like RDM/FailRP?" required></textarea>
+            
+            <div class="app-card" onclick="showView('police')" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=500&q=80');">
+                <div class="card-icon">🛡️</div>
+                <div class="card-content">
+                    <h3>Police Department</h3>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Character Backstory *</label>
-                <textarea placeholder="Briefly explain your character's story..." required></textarea>
+            
+            <div class="app-card" onclick="showView('ems')" style="background-image: url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=500&q=80');">
+                <div class="card-icon">📈</div>
+                <div class="card-content">
+                    <h3>EMS Department</h3>
+                </div>
             </div>
-            <button type="submit" class="submit-btn">Submit Whitelist Application</button>
-        </form>
+        </div>
     </div>
 
-    <!-- 2. Police Form -->
-    <div id="police" class="form-section">
-        <form>
-            <div class="form-group">
-                <label>Character Name *</label>
-                <input type="text" placeholder="First Last" required>
-            </div>
-            <div class="form-group">
-                <label>Why do you want to join the Police? *</label>
-                <textarea placeholder="Your motivation and character background..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Law Enforcement / LEO Experience *</label>
-                <textarea placeholder="Describe your past police experience..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Weekly Availability *</label>
-                <input type="text" placeholder="e.g. Mon-Fri 6pm-11pm EST" required>
-            </div>
-            <button type="submit" class="submit-btn">Submit Police Application</button>
-        </form>
+    <!-- Whitelist Form View -->
+    <div id="whitelist" class="page-view">
+        <div class="form-wrapper">
+            <h2>Whitelist Application</h2>
+            <p class="desc">Submit your citizenship request</p>
+            <form onsubmit="alert('Submitted Successfully!'); return false;">
+                <div class="input-group"><label>Real Name</label><input type="text" required></div>
+                <div class="input-group"><label>Character Name</label><input type="text" required></div>
+                <div class="input-group"><label>Age</label><input type="number" required></div>
+                <div class="input-group"><label>Discord ID</label><input type="text" required></div>
+                <div class="input-group"><label>Experience Level (1-10)</label><input type="number" min="1" max="10" required></div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+            <a class="back-btn" onclick="showView('home')">&larr; Back to Home</a>
+        </div>
     </div>
 
-    <!-- 3. EMS Form -->
-    <div id="ems" class="form-section">
-        <form>
-            <div class="form-group">
-                <label>Character Name *</label>
-                <input type="text" placeholder="First Last" required>
-            </div>
-            <div class="form-group">
-                <label>Why do you want to join EMS? *</label>
-                <textarea placeholder="Your motivation for medical RP..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Medical / EMS Experience *</label>
-                <textarea placeholder="Describe your past medical RP experience..." required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Submit EMS Application</button>
-        </form>
+    <!-- Gang Form View -->
+    <div id="gang" class="page-view">
+        <div class="form-wrapper">
+            <h2>Gang / Org Application</h2>
+            <p class="desc">Register your organization</p>
+            <form onsubmit="alert('Submitted Successfully!'); return false;">
+                <div class="input-group"><label>Gang Name</label><input type="text" required></div>
+                <div class="input-group"><label>Number of Members</label><input type="number" required></div>
+                <div class="input-group"><label>Gang Backstory</label><textarea required></textarea></div>
+                <div class="input-group"><label>Gang Goals</label><textarea required></textarea></div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+            <a class="back-btn" onclick="showView('home')">&larr; Back to Home</a>
+        </div>
     </div>
 
-    <!-- 4. Gang Form -->
-    <div id="gang" class="form-section">
-        <form>
-            <div class="form-group">
-                <label>Gang Name *</label>
-                <input type="text" placeholder="Official organization name" required>
-            </div>
-            <div class="form-group">
-                <label>Members' Discord IDs (8+) *</label>
-                <textarea placeholder="At least 8 Discord IDs required (one per line)..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Origin Story of the Gang *</label>
-                <textarea placeholder="Origin story..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Gang Objective *</label>
-                <textarea placeholder="Primary criminal/business objectives..." required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Submit Gang Application</button>
-        </form>
+    <!-- Police Form View -->
+    <div id="police" class="page-view">
+        <div class="form-wrapper">
+            <h2>Police Department Application</h2>
+            <p class="desc">Enforce law and order</p>
+            <form onsubmit="alert('Submitted Successfully!'); return false;">
+                <div class="input-group"><label>Character Name</label><input type="text" required></div>
+                <div class="input-group"><label>Why do you want to join the LSPD?</label><textarea required></textarea></div>
+                <div class="input-group"><label>Have you ever been an officer before?</label><textarea required></textarea></div>
+                <div class="input-group"><label>Availability (Hours/Week)</label><input type="text" required></div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+            <a class="back-btn" onclick="showView('home')">&larr; Back to Home</a>
+        </div>
     </div>
 
-</div>
+    <!-- EMS Form View -->
+    <div id="ems" class="page-view">
+        <div class="form-wrapper">
+            <h2>EMS Department Application</h2>
+            <p class="desc">Provide medical services</p>
+            <form onsubmit="alert('Submitted Successfully!'); return false;">
+                <div class="input-group"><label>Character Name</label><input type="text" required></div>
+                <div class="input-group"><label>Why do you want to join EMS?</label><textarea required></textarea></div>
+                <div class="input-group"><label>Medical Knowledge / Experience</label><textarea required></textarea></div>
+                <div class="input-group"><label>Are you familiar with triage?</label>
+                    <select><option>Yes</option><option>No</option></select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+            <a class="back-btn" onclick="showView('home')">&larr; Back to Home</a>
+        </div>
+    </div>
 
-<script>
-    function switchTab(evt, tabName) {
-        document.querySelectorAll('.form-section').forEach(sec => sec.classList.remove('active'));
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        
-        document.getElementById(tabName).classList.add('active');
-        evt.currentTarget.classList.add('active');
-    }
-</script>
-
+    <script>
+        function showView(viewId) {
+            document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
